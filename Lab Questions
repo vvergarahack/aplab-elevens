@@ -1,0 +1,114 @@
+Activity 2
+
+(1) A deck is an object consisting of card objects.
+
+(2) 6 cards.
+
+(3) String[] ranks={"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+   String[] suits={"Hearts", "Spades", "Diamonds", "Clovers"};
+   int[] values={2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
+
+(4) Order doesn't matter, but the indexes of the ranks and of their values 
+	in the values array should match.
+
+__________________________________________________________________________________________________________________
+
+Activity 3
+
+(1) import java.util.Random;
+
+    public static String flip(){
+     Random i = new Random();
+     if(i.nextInt(2) < 2) return "heads";
+     return "tails";
+   }
+
+(2) public static boolean arePermutations(int[] a, int[] b){
+	boolean x = false;
+	for(int i = 0; i < a.length; i++){
+		for(int j = 0; j < a.length; j++){
+			if(a[i] == b[j]){
+				x = true;
+			}
+		}
+		if(!x) return false;
+		x = false;
+	}
+	return true;
+   }
+
+(3) 0110
+
+__________________________________________________________________________________________________________________
+
+Activity 6
+
+(1) 5 spades + 6 clubs, 6 clubs + 5 clubs, 
+
+(2) They have to be J, Q, and K because numerical cards have to be removed 
+in pairs.
+
+(3) There is strategy in choosing which cards to remove, numerical or face. 
+Removing 3 face cards is better than removing a pare of numerical cards because
+there will be a greater chance of more pairs of numerical cards.
+
+__________________________________________________________________________________________________________________
+
+Activity 7
+
+(1) A table, a deck of cards, and method of tracking moves.
+
+(2)  Create a random array of 9 cards. Highlight selected cards. 
+If two cards are selected (replace button selected)...
+	If values add to 11...
+		Replace with two cards from the deck
+		Add one to counter
+If face cards do not add up to 11...
+	Restart
+If deck is empty & no face cards...
+	Player wins
+If Restart is selected...
+	Remove all cards
+	Create new deck
+	Start from beginning
+
+(3) Yes
+
+(4) (a) Called by the ElevensBoard constructor
+    (b) isLegal()
+    	anotherPlayIsPossible()
+    (c) J Hearts, 6 Spades, 2 Spades, A Spades, 4 Hearts
+    (d) public static printCards(ElevensBoard board) {
+		List<Integer> cIndexes = board.cardIndexes();
+
+		for(int i = 0; i < cIndexes.size(); i++){
+			System.out.println("Card at " + i + " is " + cIndexes.get(i));
+		}	
+	}
+	
+    (e) isLegal() because it must know the indexes of the highlighted cards to check 
+     if the values contain 11 or JQK.
+
+__________________________________________________________________________________________________________________
+
+Activity 8
+
+(1) They involve cards, sums of numerical cards, face cards have conditions for
+removing, and game restarts with cards faceup. Game is won when the board is empty.
+
+(2) Super calls the constructor from the Board class.
+
+(3) Most do, except for isLegal() and anotherPlayIsPossible() because they operate on 
+different rules depending on which game, but the rest do because they are all unified.
+
+__________________________________________________________________________________________________________________
+
+Activity 9
+
+(1) size isn't abstract method since it isn't common between elevens and thirteens.
+
+(2) Rules differ between the variations on removal and replacement.
+
+(3) No, methods differ since the different games allow different cards to be paired for removal 
+(4, 3, or 2). These methods shouldn't be abstract. The Board class design
+works well because the methods work across the different games.
